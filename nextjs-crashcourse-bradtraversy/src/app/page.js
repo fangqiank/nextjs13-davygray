@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <>
-      <h1>Welcome To Traversy Meida</h1>
+      {/* <h1>Welcome To Traversy Meida</h1> */}
       <CourseSearch getResults={res => setCourses(res)} />
       <Courses courses={courses} />
     </>
