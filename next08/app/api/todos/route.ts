@@ -4,7 +4,7 @@ const fetchURL = 'https://jsonplaceholder.typicode.com/todos'
 
 const api_key = process.env.DATA_API_KEY as string
 
-export const GET = async () => {
+export const GET= async () => {
 	const res = await fetch(fetchURL)
 
 	const todos: Todo[] = await res.json()
