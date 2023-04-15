@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server"
+import { NextResponse, NextRequest} from "next/server"
 
 const fetchURL = 'https://jsonplaceholder.typicode.com/todos'
 const api_key = process.env.DATA_API_KEY as string

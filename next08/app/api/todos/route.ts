@@ -1,15 +1,22 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
 const fetchURL = 'https://jsonplaceholder.typicode.com/todos'
 
 const api_key = process.env.DATA_API_KEY as string
 
-export const GET= async () => {
+export const GET= async (request: NextRequest) => {
+	const origin = request.headers.get('origin')
+	
 	const res = await fetch(fetchURL)
 
 	const todos: Todo[] = await res.json()
 
-	return NextResponse.json(todos)
+	return new NextResponse(JSON.stringify(todos), {
+		headers: {
+			'access-control-allow-origin': origin || '*',
+			'content-type': 'application/json'
+		}
+	})
 } 
 
 export const DELETE = async (req: Request) => {
