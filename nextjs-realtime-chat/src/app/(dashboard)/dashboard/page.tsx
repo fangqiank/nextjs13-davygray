@@ -27,9 +27,9 @@ const Dashboard = async () => {
 			const lastMessage = JSON.parse(lastMessageRaw) as Message
 
 			return {
-        ...friend,
-        lastMessage,
-      }
+				...friend,
+				lastMessage,
+			}
 		})
 	)
 
@@ -84,3 +84,4 @@ const Dashboard = async () => {
 }
 
 export default Dashboard
+

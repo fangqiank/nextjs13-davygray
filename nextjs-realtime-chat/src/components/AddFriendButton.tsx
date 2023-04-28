@@ -69,7 +69,7 @@ export const AddFriendButton: FC<AddFriendButtonProps> = () => {
 				{errors.email?.message}
 			</p>
 			{showSuccess ? (
-				<p className='mt-1 text-sm text-green-600'>Friennd resquest sent!</p>
+				<p className='mt-1 text-sm text-green-600'>Friend resquest sent!</p>
 			) : null}
 		</form>
 	)

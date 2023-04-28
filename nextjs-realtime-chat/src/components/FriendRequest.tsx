@@ -36,7 +36,7 @@ export const FriendRequest:FC<FriendRequestProps> =({incomingRequests, sessionId
 	},[sessionId])
 
 	const acceptFriend = async (id: string) => {
-		await axios.post('/api/freinds/accept', {
+		await axios.post('/api/friends/accept', {
 			id
 		})
 

@@ -17,7 +17,7 @@ export const POST = async(req: NextRequest) => {
 		const idToAdd = (await fetchRedis(
 			'get', 
 			`user:email:${emailToAdd}`
-			))as string
+			)) as string
 
 		if(!idToAdd)
 			return new NextResponse('Can not find this friend', {status:400})
