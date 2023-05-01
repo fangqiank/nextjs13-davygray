@@ -55,7 +55,7 @@ export const POST = async (req:NextRequest) => {
 			senderName: sender.name
 		})
 
-		await db.sadd(`chat:${chatId}:messages`,{
+		await db.zadd(`chat:${chatId}:messages`,{
 			score:timestamp,
 			member:JSON.stringify(messageData)
 		})

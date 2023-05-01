@@ -5,7 +5,6 @@ import axios from 'axios'
 import {toast} from 'react-hot-toast'
 import TextareaAutosize from 'react-textarea-autosize'
 import { Button } from './Button'
-import { constants } from 'buffer'
 
 type ChatInputProps = {
 	chatPartner: User, 

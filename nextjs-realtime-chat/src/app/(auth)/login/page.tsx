@@ -6,7 +6,7 @@ import {toast} from 'react-hot-toast'
 import { Button } from '@/components/Button'
 import Image from 'next/image'
 
-const Login: FC = () => {
+const Login = () => {
 	const [isLoading, setIsLoading] = useState(false)
 
 	const handleClick = async() => {
