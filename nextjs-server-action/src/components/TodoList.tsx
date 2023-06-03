@@ -1,5 +1,3 @@
-import {FaTrash} from 'react-icons/fa'
-import Link from 'next/link'
 import { fetchTodos } from '@/lib/fetchTodos'
 import { Todo } from './Todo'
 

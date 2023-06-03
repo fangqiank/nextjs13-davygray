@@ -1,5 +1,5 @@
 export const fetchTodo = async (id: string) => {
-	const res = await fetch(`http://127.0.0.1:3500/todos/{id}`)
+	const res = await fetch(`http://127.0.0.1:3500/todos/${id}`)
 
 	if(!res.ok)
 		return undefined
