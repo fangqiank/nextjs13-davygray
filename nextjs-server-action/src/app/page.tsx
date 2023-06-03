@@ -2,6 +2,8 @@ import { PostCard } from "@/components/PostCard"
 import Link from 'next/link'
 import fs from 'node:fs/promises'
 import { NameField } from "@/components/FileList"
+import { AddTodo } from "@/components/AddTodo"
+import { TodoList } from "@/components/TodoList"
 
 const getPosts = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts?_sort=title', {
@@ -53,7 +55,7 @@ export default async function Home() {
   */
 
   return (
-    <main className="p-5">
+    <>
       <div>
         <Link href="/formPost">Simple Form Post</Link>
       </div>
@@ -66,7 +68,12 @@ export default async function Home() {
       <div>
         <Link href="/search">Pokemon Search</Link>
       </div>
-    </main>
+
+      <AddTodo />
+      
+      {/* @ts-expect-error Server Component */}
+      <TodoList />
+    </>
   )
 
 }

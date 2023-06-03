@@ -1,7 +1,6 @@
+import { Navbar } from '@/components/Navbar';
 import './globals.css'
 import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,8 +14,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme='dracula' style={{backgroundColor:'black'}}>
-      <body className={inter.className}>{children}</body>
-      <noscript className="text-white">JavaScript is disabled</noscript>
+      
+      <body 
+        className='dark: bg-slate-800'
+        suppressHydrationWarning={true}
+      >   
+        <Navbar />  
+        <main className="mx-auto max-w-xl p-4 bg-stone-200 min-h-screen text-black">
+         {/* <noscript className="text-white">JavaScript is disabled</noscript> */}
+          {children}
+        </main>
+      </body>
+      
     </html>
   )
 }
