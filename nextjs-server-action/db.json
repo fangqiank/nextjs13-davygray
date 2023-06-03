@@ -27,7 +27,7 @@
     {
       "userId": 1,
       "title": "new todo",
-      "completed": false,
+      "completed": true,
       "id": 7
     }
   ]

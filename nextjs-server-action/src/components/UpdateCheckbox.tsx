@@ -8,7 +8,7 @@ import {useTransition} from 'react'
 
 export const UpdateCheckbox = ({todo}: {todo: Todo}) => {
 	const router = useRouter()
-	const [isPending, startTransition] = useTransition()
+	// const [isPending, startTransition] = useTransition()
 	const {pending} = useFormStatus()
 	const [optimisticTodo, addoptimisticTodo] = useOptimistic(
 		todo,
@@ -25,14 +25,14 @@ export const UpdateCheckbox = ({todo}: {todo: Todo}) => {
 			checked={optimisticTodo.completed}
 			id="completed"
 			name="completed"
-			// onChange={async () => {
-			// 	addoptimisticTodo(!todo.completed)
-			// 	await updateTodo(todo)
-			// 	router.refresh()
-			// }}
-			onChange={() => startTransition(() => updateTodo(todo))}
-			// disabled={pending}
-			disabled={isPending}
+			onChange={async () => {
+				addoptimisticTodo(!todo.completed)
+				await updateTodo(todo)
+				router.refresh() //update client-side cache
+			}}
+			// onChange={() => startTransition(() => updateTodo(todo))}
+			disabled={pending}
+			// disabled={isPending}
 		/>
 	)
 }
