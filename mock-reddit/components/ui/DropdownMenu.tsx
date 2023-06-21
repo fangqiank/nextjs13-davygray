@@ -1,10 +1,9 @@
 'use client'
 
-import React, {ComponentPropsWithoutRef, ElementRef, forwardRef} from 'react'
+import React, {ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes} from 'react'
 import * as DropddownMenuPrimitive from '@radix-ui/react-dropdown-menu'
-import {Check, ChevronRight} from 'lucide-react'
+import {Check, ChevronRight, Circle} from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { classNames } from 'uploadthing/client'
 
 export const DropdownMenu = DropddownMenuPrimitive.Root
 
@@ -90,4 +89,52 @@ export const DropdownMenuCheckboxItem = forwardRef<ElementRef<typeof DropddownMe
 DropdownMenuCheckboxItem.displayName = DropddownMenuPrimitive.CheckboxItem.displayName
 
 
-export const DropdownMenyRadioItem = forwardRef<>
+export const DropdownMenyRadioItem = forwardRef<ElementRef<typeof DropddownMenuPrimitive.RadioItem>,
+ComponentPropsWithoutRef<typeof DropddownMenuPrimitive.RadioItem>>(
+	({className, children, ...props}, ref) => (
+		<DropddownMenuPrimitive.RadioItem
+			ref={ref}
+			className={cn( "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className)}
+			{...props}
+		>
+			<span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+				<DropddownMenuPrimitive.ItemIndicator>
+					<Circle className='h-2 w-2 fill-current'/>
+				</DropddownMenuPrimitive.ItemIndicator>
+			</span>
+			{children}
+		</DropddownMenuPrimitive.RadioItem>
+	)
+)
+DropdownMenyRadioItem.displayName = DropddownMenuPrimitive.RadioItem.displayName
+
+export const DropdownMenuLabel = forwardRef<ElementRef<typeof DropddownMenuPrimitive.Label>, ComponentPropsWithoutRef<typeof DropddownMenuPrimitive.Label> & {inset?:boolean}>(
+	({className, inset, ...props}, ref) => (
+		<DropddownMenuPrimitive.Label
+			ref={ref}
+			className={cn('px-2 py-1.5 text-sm font-semibold', inset && 'pl-8', className)}
+			{...props} 
+		/>
+	)
+)
+DropdownMenuLabel.displayName = DropddownMenuPrimitive.Label.displayName
+
+const DropdownMenuSeparator = forwardRef<ElementRef<typeof DropddownMenuPrimitive.Separator>, ComponentPropsWithoutRef<typeof DropddownMenuPrimitive.Separator>>(
+	({className, ...props}, ref) => (
+		<DropddownMenuPrimitive.Separator
+			ref={ref}
+			className={cn('-mx-1 my-1 h-px bg-muted', className)}
+			{...props} 
+		/>
+	)
+)
+DropdownMenuSeparator.displayName = DropddownMenuPrimitive.Separator.displayName
+
+export const DropdownMenuShortcut = ({className, ...props}: HTMLAttributes<HTMLSpanElement>) => (
+	<span
+		className={cn('ml-auto text-xs tracking-widest opacity-60', className)}
+		{...props}
+	/>
+)
+DropdownMenuShortcut.displayName = 'DropdownMenuShortcut'

@@ -30,8 +30,8 @@ export const quotes = mysqlTable("quotes", {
 },
 (table) => {
 	return {
-		quote: uniqueIndex("quote").on(table.quote),
 		authorIdIdx: index("author_id_idx").on(table.authorId),
 		categoryIdIdx: index("category_id_idx").on(table.categoryId),
+		quote: uniqueIndex("quote").on(table.quote),
 	}
 });
