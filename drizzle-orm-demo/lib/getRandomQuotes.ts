@@ -1,20 +1,25 @@
  import {getAllQuotes} from './getAllQuotes'
 
- const prevQuoteObj = {
-	prev: 1,
-	setPrev: function (num: number) { this.prev = num }
- }
+//  const prevQuoteObj = {
+// 	prev: 1,
+// 	setPrev: function (num: number) { this.prev = num }
+//  }
 
- export const getRandomQuote = async (): Promise<Quote> => {
-	const results = await getAllQuotes()
+ export const getRandomQuote = async (id: string): Promise<Quote> => {
+	const prevQuoteId = parseInt(id)
 
-	let randomInd = prevQuoteObj.prev
+	const results: Quote[] = await getAllQuotes()
 
-	while(randomInd === prevQuoteObj.prev){
-		randomInd = Math.floor(Math.random() * results.length)
+	const ids: number[] = results.map(q => q.id)
+
+	let randomId = prevQuoteId
+
+	while(randomId === prevQuoteId){
+		const randomInd = Math.floor(Math.random() * results.length)
+		randomId = ids[randomInd]
 	}
 
-	prevQuoteObj.setPrev(randomInd)
+	const newQuote = results.find(q => q.id === randomId) as Quote
 
-	return results[randomInd]
+	return newQuote
  }
