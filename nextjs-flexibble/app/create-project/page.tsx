@@ -3,7 +3,7 @@ import {getCurrentUser} from '@/lib/session'
 import { Modal } from "@/components/Modal"
 import { ProjectForm } from "@/components/ProjectForm"
 
-export const CreateProjectPage = async () => {
+const CreateProjectPage = async () => {
 	const session = await getCurrentUser()
 
 	if(!session?.user) 
@@ -20,3 +20,5 @@ export const CreateProjectPage = async () => {
 		</Modal>
 	)
 }
+
+export default CreateProjectPage

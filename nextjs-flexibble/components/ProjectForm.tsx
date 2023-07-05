@@ -9,7 +9,6 @@ import { CustomMenu } from './CustomMenu'
 import {categoryFilters} from '@/constants'
 import {updateProject, createNewProject, fetchToken} from '@/lib/actions'
 import { SessionInterface, ProjectInterface, FormState } from '@/types'
-import { FormField } from './FormField'
 
 type ProjectFormProps = {
 	type: string,
@@ -52,7 +51,7 @@ export const ProjectForm = ({type, session, project}: ProjectFormProps) => {
 
 		const fileReader = new FileReader()
 
-		FileReader.readAsDataURL(file)
+		fileReader.readAsDataURL(file)
 
 		fileReader.onload = () => {
 			const result = fileReader.result as string
@@ -67,9 +66,10 @@ export const ProjectForm = ({type, session, project}: ProjectFormProps) => {
 		setSubmitting(true)
 
 		const {token} = await fetchToken()
-
+	
 		try{
 			if(type === 'create'){
+				console.log(session		)
 				await createNewProject(form, session?.user?.id, token)
 				router.push('/')
 			} else if (type === 'edit'){
@@ -77,6 +77,7 @@ export const ProjectForm = ({type, session, project}: ProjectFormProps) => {
 				router.push('/')
 			}
 		}catch(err){
+			console.error(err)
 			alert(`Failed to ${type === "create" ? "create" : "edit"} a project. Try again!`)
 		}finally{
 			setSubmitting(false)
@@ -122,10 +123,18 @@ export const ProjectForm = ({type, session, project}: ProjectFormProps) => {
 			/>
 
 			<FormField
+				title='Description'
+				state={form.description}
+				placeholder="Showcase and discover remarkable developer projects."
+				isTextArea
+				setState={(value) => handleChange('description', value)}
+			/>
+
+			<FormField
 				type="url"
 				title="Website URL"
 				state={form.liveSiteUrl}
-				placeholder="https://jsmastery.pro"
+				placeholder="https://github.com"
 				setState={(value) => handleChange('liveSiteUrl', value)}
 			/>
 
@@ -133,7 +142,7 @@ export const ProjectForm = ({type, session, project}: ProjectFormProps) => {
 				type="url"
 				title="GitHub URL"
 				state={form.githubUrl}
-				placeholder="https://github.com/adrianhajdin"
+				placeholder="https://github.com"
 				setState={(value) => handleChange('githubUrl', value)}
 			/>
 
@@ -146,7 +155,14 @@ export const ProjectForm = ({type, session, project}: ProjectFormProps) => {
 
 			<div className="flexStart w-full">
 				<Button
-					title={submitting ? `${type === "create" ? "Creating" : "Editing"}` : `${type === "create" ? "Create" : "Edit"}`}
+					title={submitting 
+						? `${type === "create" 
+							? "Creating" 
+							: "Editing"}` 
+						: `${type === "create" 
+							? "Create" 
+							: "Edit"}`}
+					// textColor='text-black'
 					type='submit'
 					leftIcon={submitting ? '' : '/plus.svg'}
 					submitting={submitting}

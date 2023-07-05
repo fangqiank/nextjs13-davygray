@@ -40,14 +40,14 @@ export const Modal = ({children}: ModalProps) => {
 					height={17} 
 					alt='close'
 				/>
-
-				<div 
-					ref={warpper}
-					className="modal_wrapper"
-				>
-					{children}
-				</div>
 			</button>
+
+			<div 
+				ref={warpper}
+				className="modal_wrapper"
+			>
+				{children}
+			</div>
 		</div>
 	)
 }

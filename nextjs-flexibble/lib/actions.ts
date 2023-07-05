@@ -4,7 +4,7 @@ import { ProjectForm } from '@/types'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const apiUrl = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_URL || '' : 'http://127.0.0.1:4000/graphql'
-const apiKey = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_KEY || '' : 'gc4nzx4HvRIHxNsvzlcO8+TwY47qA8Xrfn05u9lAIPQ='
+const apiKey = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_KEY || '' : 'Ld+y3gphMy2Tw23vO0bBgt8/BxoLab4yQ6wO8LNdp+U='
 const serverUrl = isProduction ? process.env.NEXT_PUBLIC_SERVER_URL : 'http://localhost:3000'
 
 const client = new GraphQLClient(apiUrl)
@@ -54,6 +54,8 @@ export const createNewProject = async (form: ProjectForm, creatorId: string, tok
 
 	if(imageUrl.url){
 		client.setHeader('Authorization', `Bearer ${token}`)
+
+		console.log(creatorId);
 
 		const variables = {
 			input: {

@@ -37,7 +37,7 @@ export const Footer = () => {
 			<div className="flex flex-col gap-12 w-full">
 				<div className="flex items-start flex-col">
 					<Image
-						src='/logo-purple.svg'
+						src='/logo.png'
 						width={116}
 						height={38}
 						alt='logo' 
@@ -89,7 +89,7 @@ export const Footer = () => {
 			</div>
 
 			<div className="flexBetween footer_copyright">
-				<p>@ 2023 Flexibble. All rights reserved</p>
+				<p>@ 2023 Next.js. All rights reserved</p>
 				<p className="text-gray">
 					<span className="text-black font-semibold">10,214</span> projects submitted
 				</p>

@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -20,9 +18,9 @@ export const Navbar = async () => {
 					href='/'
 				>
 					<Image
-						src='/logo.svg'
-						width={116}
-						height={43}
+						src='/logo.png'
+						width={70}
+						height={40}
 						alt='logo' 
 					/>
 				</Link>
@@ -39,19 +37,23 @@ export const Navbar = async () => {
 				</ul>
 			</div>
 
-			{/* <div className="flexCenter gap-4">
+			<div className="flexCenter gap-4">
 				{session?.user ? (
 					<>
 						<ProfileMenu session={session} />
 
 						<Link href='/create-project'>
-							<Button title='Share Work'/>
+							<Button 
+								title='Share Work'
+								// textColor='text-black'
+							/>
 						</Link>
 					</>
 				) : (
 					<AuthProvider />
 				)}
-			</div> */}
+
+			</div>
 		</nav>
 	)
 	

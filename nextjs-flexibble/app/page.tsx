@@ -35,26 +35,26 @@ export  default async function Home({searchParams: {
   category,
   endCursor
 }}: SearchProps ) {
-  // const data = await fetchAllProjects(category, endCursor) as ProjectSearch
+  const data = await fetchAllProjects(category, endCursor) as ProjectSearch
   // console.log(data);
 
-  // const projectsTodisplay = data?.projectSearch?.edges || []
+  const projectsTodisplay = data?.projectSearch?.edges || []
 
-  // if(projectsTodisplay.length === 0){
-  //   return (
-  //     <section className="flexStart flex-col paddings">
-  //       <Categories />
+  if(projectsTodisplay.length === 0){
+    return (
+      <section className="flexStart flex-col paddings">
+        <Categories />
 
-  //       <p className="no-result-text text-center">No projects found</p>
-  //     </section>
-  //   )
-  // }
+        <p className="no-result-text text-center">No projects found</p>
+      </section>
+    )
+  }
 
   return (
     <section className="flexStart flex-col paddings mb-16">
-      {/* <Categories /> */}
+      <Categories />
 
-      {/* <section className="projects-grid">
+      <section className="projects-grid">
         {projectsTodisplay.map(({node}: {node: ProjectInterface}) => (
           <ProjectCard
             key={`${node?.id}`}
@@ -73,7 +73,7 @@ export  default async function Home({searchParams: {
         endCursor={data?.projectSearch?.pageInfo?.endCursor}
         hasPreviousPage={data?.projectSearch?.pageInfo?.hasPreviousPage}
         hasNextPage={data?.projectSearch?.pageInfo?.hasNextPage} 
-      /> */}
+      />
     </section>
   )
 }
