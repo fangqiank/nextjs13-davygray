@@ -8,6 +8,10 @@ const apiKey = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_KEY || '' : '
 const serverUrl = isProduction ? process.env.NEXT_PUBLIC_SERVER_URL : 'http://localhost:3000'
 
 const client = new GraphQLClient(apiUrl)
+client.requestConfig.fetch = (url, options) => fetch(url, {
+	...options,
+	next: {tags: ['settings']}
+})
 
 export const fetchToken = async () => {
 	try{

@@ -20,7 +20,7 @@ export const FormField = ({type, title, state, placeholder, isTextArea, setState
 				<textarea
 					placeholder={placeholder}
 					value={state}
-					className='form_fieldinput'
+					className='form_field-input'
 					onChange={e => setState(e.target.value)} 
 				/>
 			) : (
